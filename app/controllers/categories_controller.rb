@@ -10,6 +10,11 @@ def show
   render :show
 end
 
+def destroy
+  @category = Category.find_by(id: params[:id])
+  @category.destroy
+  redirect_to "/categories", status: :see_other
+end
 
 
 end 
