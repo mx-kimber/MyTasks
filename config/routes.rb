@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   resources :users
   resources :tasks
-  # resources :categories
+  resources :categories
 
-  get "/categories" => "categories#index"
+  # get "/categories" => "categories#index"
+  # get "/categories" => "categories#show"
   
 end
