@@ -1,6 +1,13 @@
 class CategoriesController < ApplicationController
 
 def index 
-  render json: {message: "snowcones"}
+  @category = Category.all
+  render :index
 end 
-end
+
+
+
+# def update 
+# end
+
+end 
