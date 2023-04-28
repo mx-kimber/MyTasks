@@ -1,7 +1,15 @@
 class TasksController < ApplicationController
 
   def index
-    render json: {message:"tasks working"}
+    @tasks = Task.all
+    render :index
   end
+
+   def show
+    @task = Task.find_by(id: params[:id])
+    render :show
+   end
+
+
 
 end

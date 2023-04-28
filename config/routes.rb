@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :tasks
   resources :categories
 
-  # get "/categories" => "categories#index"
-  # get "/categories" => "categories#show"
+
+  post "/sessions" => "sessions#create"
   
+
 end
