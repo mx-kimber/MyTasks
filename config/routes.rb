@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :users
+  
+  get "/signup" => "users#new"	
+  post "/users" => "users#create"
+
+
   resources :tasks
   resources :categories
 
