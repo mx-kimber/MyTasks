@@ -1,0 +1,2 @@
+class CategoryTasksController < ApplicationController
+end
