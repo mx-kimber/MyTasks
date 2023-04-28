@@ -16,5 +16,17 @@ def destroy
   redirect_to "/categories", status: :see_other
 end
 
+def new
+  @category = Category.new
+  render :new
+end
 
+def create 
+  @category = Category.create(
+    name: params[:category][:name]
+  )
+  render :show
+
+
+end 
 end 
