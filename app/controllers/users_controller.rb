@@ -1,3 +1,5 @@
+
+
 class UsersController < ApplicationController
   
   def index
@@ -29,9 +31,4 @@ class UsersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
-
-  
-
-
 end
