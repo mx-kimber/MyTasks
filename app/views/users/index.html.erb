@@ -1,11 +1,9 @@
 <h1>All Users</h1>
 
-<h2><a href="/users/new">All Users?</a></h2>
+
 
 <% @users.each do |user| %>
+  <h2><%= user.id %></h2>
   <h2><%= user.name %></h2>
   <h3><%= user.email %></h3>
-  
-
-  <a href="/users/<%= user.id %>">More info</a>
 <% end %>

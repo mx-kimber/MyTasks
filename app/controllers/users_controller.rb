@@ -2,10 +2,10 @@
 
 class UsersController < ApplicationController
   
-  def index
-    @user = User.all
-    render :index
-  end
+  # def index
+  #   @users = User.all
+  #   render :index
+  # end
 
   def show
     @user = User.find_by(id: params[:id])
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     )
     if @user.save
       session[:user_id] = @user.id
-      redirect_to "/users"
+      redirect_to "/users/show"
     else
       render :new, status: :unprocessable_entity
     end

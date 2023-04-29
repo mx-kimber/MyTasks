@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :tasks
   resources :categories
+  resources :users#, only: [:index, :show]
 
 
   get "/login" => "sessions#new"
