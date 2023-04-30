@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
+  root "tasks#index"
 
-  resources :users
   resources :tasks
   resources :categories
 
-  # get "/categories" => "categories#index"
-  # get "/categories" => "categories#show"
-  
+  # users
+  get "/signup" => "users#new"
+  post "/users" => "users#create"
+
+  # sessions
+  get "/login" => "sessions#new"
+  post "/sessions" => "sessions#create"
+  get "/logout" => "sessions#destroy"
+
+
 end
