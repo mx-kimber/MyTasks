@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
- 
+  before_action :require_login
 
   def index
-    @tasks = Task.all
+    @tasks = Task.where(user_id: current_user.id)
     render :index
   end
 
