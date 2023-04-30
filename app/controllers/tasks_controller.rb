@@ -3,8 +3,8 @@ class TasksController < ApplicationController
 
 
   def index
-  @tasks = Task.where(user_id: current_user.id)
-  render :index
+    @tasks = Task.where(user_id: current_user.id)
+    render :index
   end
 
 
@@ -18,7 +18,7 @@ class TasksController < ApplicationController
   end
 
   def create
-   @task = Task.new(
+    @task = Task.new(
       user_id: current_user.id,
       title: params[:task][:title],
       description: params[:task][:description],
