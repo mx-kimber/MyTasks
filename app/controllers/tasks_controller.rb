@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :require_login
 
+
   def index
   @tasks = Task.where(user_id: current_user.id)
   render :index
@@ -47,7 +48,7 @@ class TasksController < ApplicationController
     if task.save
       redirect_to "/tasks/#{task.id}"
     else
-      render :edit
+      render :new, status: :unprocessable_entity
     end
   end
 
