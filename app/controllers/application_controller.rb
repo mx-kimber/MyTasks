@@ -7,5 +7,12 @@ class ApplicationController < ActionController::Base
   def authenticate_user
     redirect_to '/login', status: :see_other unless current_user
   end
-    
+
+  def require_login
+    unless current_user
+      flash[:error] = "You must log in for access."
+      redirect_to login_path
+    end
+  end
+
 end

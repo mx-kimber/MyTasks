@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
-
-  
-  get "/signup" => "users#new"	
-  post "/users" => "users#create"
-  get "/users" => "users#index"
-
+  root "tasks#index"
 
   resources :tasks
   resources :categories
-  resources :users#, only: [:index, :show]
 
+  # users
+  get "/signup" => "users#new"
+  post "/users" => "users#create"
 
+  # sessions
   get "/login" => "sessions#new"
   post "/sessions" => "sessions#create"
   get "/logout" => "sessions#destroy"
-  
+
 
 end
