@@ -1,11 +1,9 @@
 class CategoriesController < ApplicationController
-  has_many :tasks
-  through :category_tasks
 
-  def index 
+  def index
     @category = Category.all
     render :index
-  end 
+  end
 
   def show
     @category = Category.find_by(id: params[:id])
@@ -23,11 +21,11 @@ class CategoriesController < ApplicationController
     render :new
   end
 
-  def create 
+  def create
     @category = Category.create(
       name: params[:category][:name]
     )
     render :show
-  end 
+  end
 
-end 
+end
