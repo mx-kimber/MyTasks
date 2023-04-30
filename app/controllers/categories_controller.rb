@@ -32,7 +32,6 @@ class CategoriesController < ApplicationController
     @category.destroy
     redirect_to "/categories"#, status: :see_other
   end
-
 end
 <<<<<<< HEAD
 
