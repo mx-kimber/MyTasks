@@ -16,7 +16,11 @@ class CategoriesController < ApplicationController
   end
 
   def create
+<<<<<<< HEAD
+    @category = Category.new(category_params)
+=======
     @category = Category.new(name: params[:category][:name])
+>>>>>>> aa85b1aef0da886ff92531d64b3ca97bcc478830
     if @category.save
       @task = Task.find(params[:task_id])
       @category_task = CategoryTask.new(category_id: @category.id, task_id: @task.id)
@@ -29,7 +33,10 @@ class CategoriesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+<<<<<<< HEAD
+=======
 
+>>>>>>> aa85b1aef0da886ff92531d64b3ca97bcc478830
 
 
   def destroy
