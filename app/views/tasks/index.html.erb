@@ -5,16 +5,14 @@
     <li>
       <%= link_to task.title, task_path(task) %> |
       <%= task.description %>
-      <p>Deadline: <%= task.deadline %>
+      <p><strong>Deadline:</strong> <%= task.deadline %>
+      <br>
       <% if task.completed %>
         (completed)
       <% else %>
         (not completed)
       <% end %>
-      <br>
-    <%= link_to 'Show', task %> |
-    <%= link_to 'Edit', edit_task_path(task) %> |
-    <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <hr>
     </li>
   <% end %>
 
