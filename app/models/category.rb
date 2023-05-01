@@ -1,5 +1,8 @@
 class Category < ApplicationRecord
-  has_and_belongs_to_many :tasks
+  belongs_to :user
+  has_many :category_tasks
+  has_many :tasks, through: :category_tasks
+
   validates :name, presence: true, uniqueness: true
 
 
