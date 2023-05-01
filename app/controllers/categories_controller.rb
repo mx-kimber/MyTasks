@@ -18,16 +18,16 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(name: params[:category][:name])
     if @category.save
-      @task = Task.find(params[:task_id])
-      @category_task = CategoryTask.new(category_id: @category.id, task_id: @task.id)
-      if @category_task.save
+      # @task = Task.find(params[:task_id])
+      # @category_task = CategoryTask.new(category_id: @category.id, task_id: @task.id)
+      # if @category_task.save
         redirect_to category_path(@category)
       else
         render :new, status: :unprocessable_entity
       end
-    else
-      render :new, status: :unprocessable_entity
-    end
+    # else
+    #   render :new, status: :unprocessable_entity
+    # end
   end
 
 
