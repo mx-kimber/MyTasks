@@ -19,6 +19,15 @@
           <% task.categories.each do |category| %>
             <%= category.name %><br>
           <% end %></p>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-secondary active">
+    <input type="radio" name="options" id="option1" autocomplete="off" checked> Complete
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="options" id="option2" autocomplete="off"> Not Complete
+  </label>
+</div>
+
       </ul>
     <% end %>
   </tbody>
