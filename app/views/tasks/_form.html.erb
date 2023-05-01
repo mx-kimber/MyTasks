@@ -5,3 +5,33 @@
     <%= label_tag "task_category_ids_#{category.id}", category.name %>
   </div>
 <% end %>
+
+<%= form.label :category_ids, "Categories" %>
+<% Category.all.each do |category| %>
+  <div>
+    <%= check_box_tag "task[category_ids][]", category.id %>
+    <%= label_tag "task_category_ids_#{category.id}", category.name %>
+  </div>
+<% end %>
+
+<%= form_with model: @task, url: tasks_path do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+
+  <%= form.label :deadline %>
+  <%= form.date_field :deadline %>
+
+  <%= form.label :category_ids, "Categories" %>
+  <% @categories.each do |category| %>
+    <div>
+      <%= form.check_box :category_ids, { multiple: true }, category.id, nil %>
+      <%= form.label "task_category_ids_#{category.id}", category.name %>
+    </div>
+  <% end %>
+
+  <%= form.submit %>
+<% end %>
+

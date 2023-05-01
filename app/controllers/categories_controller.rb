@@ -3,7 +3,6 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
-    # @categories = Category.where(user_id: current_user.id)
     render :index
   end
 
@@ -17,11 +16,9 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.create(
-      name: params[:category][:name]
-    )
+    @category = Category.new(category_params)
     if @category.save
-      redirect_to "/categories/#{@category.id}"
+      redirect_to category_path(@category)
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,6 +27,13 @@ class CategoriesController < ApplicationController
   def destroy
     @category = Category.find_by(id: params[:id])
     @category.destroy
-    redirect_to "/categories"
+    redirect_to categories_path
+  end
+
+  private
+
+  def category_params
+    params.require(:category).permit(:name)
   end
 end
+

@@ -1,12 +1,14 @@
 class TasksController < ApplicationController
   before_action :require_login
 
-
   def index
-  @tasks = Task.where(user_id: current_user.id)
-  render :index
+    if params[:category_id].present?
+      @tasks = Task.joins(:categories).where(categories: { id: params[:category_id] })
+    else
+      @tasks = Task.where(user_id: current_user.id)
+    end
+    render :index
   end
-
 
   def show
     @task = Task.find_by(id: params[:id])
@@ -65,3 +67,4 @@ class TasksController < ApplicationController
     redirect_to "/tasks"
   end
 end
+
