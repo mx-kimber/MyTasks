@@ -2,18 +2,18 @@
 
 <%= form_with model: @task do |form| %>
 
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <p><%= form.label :title %><br>
+    <%= form.text_field :title %></p>
 
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+    <p><%= form.label :description %><br>
+    <%= form.text_area :description %></p>
 
-    <%= form.label :deadline %>
-    <%= form.text_area :deadline %>
+    <p><%= form.label :deadline %><br>
+    <%= form.text_area :deadline %></p>
 
-    <%= form.label :completed %>
-    <%= form.check_box :completed %>
-
+    <p><%= form.label :completed %><br>
+    <%= form.check_box :completed %></p>
+<hr>
     <%= form.submit %>
 
 <% end %>
