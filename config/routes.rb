@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :category_tasks
   end
 
+  resources :category_tasks, only: [:create]
+
   # users
   get "/signup" => "users#new"
   post "/users" => "users#create"
@@ -15,4 +17,5 @@ Rails.application.routes.draw do
   post "/sessions" => "sessions#create"
   get "/logout" => "sessions#destroy"
 end
+
 

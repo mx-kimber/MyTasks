@@ -23,7 +23,7 @@ def task_params
         .transform_values{ |v| v.is_a?(String) && v.match?(/\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}\z/) ? DateTime.parse(v) : v }
 end
 
-private
+
 
 def category_params
   params.require(:category).permit(:name)
