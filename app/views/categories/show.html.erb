@@ -1,5 +1,19 @@
 <h1><%= @category.name %> tasks</h1>
 
+<% if @category.tasks.any? %>
+  <ul>
+    <% @category.tasks.each do |task| %>
+      <li><%= link_to task.title, task_path(task) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No tasks found for this category.</p>
+<% end %>
+
+<a href="/categories">See all categories</a>
+
+<a href="/categories/<%= @category.id %>" data-turbo-method="delete">Delete Category</a>
+
 
 <a href="/categories">See all categories</a>
 
