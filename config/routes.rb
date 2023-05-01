@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root "tasks#index"
 
   resources :tasks
-  resources :categories
+  resources :categories do
+    resources :category_tasks
+  end
 
   # users
   get "/signup" => "users#new"
@@ -12,6 +14,5 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new"
   post "/sessions" => "sessions#create"
   get "/logout" => "sessions#destroy"
-
-
 end
+

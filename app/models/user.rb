@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :tasks
+  has_many :categories
   has_many :category_tasks, through: :tasks
 
   has_secure_password
