@@ -2,15 +2,11 @@ class TasksController < ApplicationController
   before_action :require_login
 
   def index
-<<<<<<< HEAD
-    @tasks = Task.where(user_id: current_user.id)
-=======
     if params[:category_id].present?
       @tasks = Task.joins(:categories).where(categories: { id: params[:category_id] })
     else
       @tasks = Task.where(user_id: current_user.id)
     end
->>>>>>> ec83d0ea3d78f26c61dfee146a60a467c94a8859
     render :index
   end
 
