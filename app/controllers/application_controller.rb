@@ -16,5 +16,12 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+
+def task_params
+  params.require(:task).permit(:title, :description, :completed, :category_ids, :deadline)
+        .transform_values{ |v| v.is_a?(String) && v.match?(/\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}\z/) ? DateTime.parse(v) : v }
+end
+
 end
 

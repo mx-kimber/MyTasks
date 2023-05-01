@@ -1,4 +1,9 @@
 <h1>All Tasks</h1>
+<%= form_tag tasks_path, method: :get do %>
+  <%= label_tag :category_id, "Category" %>
+  <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name", params[:category_id]), include_blank: true %>
+  <%= submit_tag "Filter" %>
+<% end %>
 
 <table>
   <thead>
@@ -34,16 +39,7 @@
 
 <br>
 
-<%= form_tag tasks_path, method: :get do %>
-  <%= label_tag :category_ids, "Categories" %>
-  <% Category.all.each do |category| %>
-    <div>
-      <%= check_box_tag "category_ids[]", category.id, params[:category_ids].present? && params[:category_ids].include?(category.id.to_s) %>
-      <%= label_tag "category_ids_#{category.id}", category.name %>
-    </div>
-  <% end %>
-  <%= submit_tag "Filter" %>
-<% end %>
+
 
 
 
