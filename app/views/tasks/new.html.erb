@@ -1,16 +1,27 @@
 <h1>New Task</h1>
 
-<p><%= form_with(model: @task, local: true) do |form| %>
+<%= form_with(model: @task, local: true) do |form| %>
   <%= form.label :title %>
   <%= form.text_field :title %>
-<br>
+  <br>
+
   <%= form.label :description %>
-  <%= form.text_field :description %>
-<br>
+  <%= form.text_area :description %>
+  <br>
+
   <%= form.label :deadline %>
   <%= form.datetime_local_field :deadline %>
+  <br>
 
+  <%= form.label :category_ids, "Categories" %>
+  <% Category.all.each do |category| %>
+    <div>
+      <%= check_box_tag "task[category_ids][]", category.id, false, id: "category_ids_#{category.id}" %>
+      <%= label_tag "category_ids_#{category.id}", category.name %>
+    </div>
+  <% end %>
 
-<hr>
-<%= form.submit "Create Task" %></p>
+  <br>
+
+  <%= form.submit "Create Task" %>
 <% end %>
