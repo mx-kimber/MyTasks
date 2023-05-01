@@ -2,6 +2,15 @@
 <h1><%= @task.title %></h1>
 <p><%= @task.description %></p>
 <p><strong>Deadline:</strong> <%= @task.deadline %></p>
-<p><strong>Completed:</strong> <%= @task.completed ? "Yes" : "No" %></p>
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-secondary active">
+    <input type="radio" name="options" id="option1" autocomplete="off" checked> Complete
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="options" id="option2" autocomplete="off"> Not Complete
+  </label>
+</div>
+<br>
+<br>
 <p><%= link_to "Edit Task", edit_task_path(@task) %></p>
 <a href="/tasks/<%= @task.id %>" data-turbo-method="delete">Delete Task</a>
