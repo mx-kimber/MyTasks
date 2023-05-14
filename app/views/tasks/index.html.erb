@@ -1,48 +1,29 @@
 
 <h1>All Tasks</h1>
-
-<%= link_to "All Tasks", "/tasks", class: "btn btn-sm btn-primary" %>  <%= link_to "Categories", categories_path, class: "btn btn-sm btn-primary" %>   <%= link_to "New Task", "/tasks/new", class: "btn btn-sm btn-primary ml-auto" %>
 <hr>
 <%= form_tag tasks_path, method: :get do %>
-  <%= label_tag :category_id, "Category" %>
+  <%= label_tag :category_id, "Search by category:" %>
   <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name", params[:category_id]), include_blank: true %>
-  <%= submit_tag "Filter" %>
+  <%= submit_tag "&#x1F50D;".html_safe %>
 <% end %>
 
 <br>
-  <tbody>
-    <% @tasks.each do |task| %>
-      <ul>
-      <p> <%= link_to task.title, task_path(task.id) %>
-        <br>
-        <strong>Description: </strong><%= task.description %>
-        <br>
-        <strong>Deadline: </strong><%= task.deadline %>
-        <br>
-        <strong>Category: </strong>
-          <% task.categories.each do |category| %>
-            <%= category.name %><br>
-          <% end %></p>
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-secondary active">
-    <input type="radio" name="options" id="option1" autocomplete="off" checked> Complete
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio" name="options" id="option2" autocomplete="off"> Not Complete
-  </label>
-</div>
-
-      </ul>
-    <% end %>
-  </tbody>
-
-
-
-
-
-
-
-
-
-
+<% @tasks.each do |task| %>
+  <ul>
+  <p> <%= link_to task.title, task_path(task.id), class: "btn btn-sm btn-primary" %>
+    <br>
+    <strong>Description: </strong><%= task.description %>
+    <br>
+    <strong>Date: </strong><%= task.deadline %>
+    <br>
+    <strong>Category: </strong>
+      <% task.categories.each do |category| %>
+        <%= category.name %>
+      <% end %>
+      <%= form_with model: @task do |form| %>
+<%= form.check_box :completed %> <%= form.label :completed %>
+    </p>
+<% end %>  
+    </ul>
+<% end %>
 

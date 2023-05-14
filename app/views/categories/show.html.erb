@@ -1,4 +1,4 @@
-<h1><%= @category.name %> tasks</h1>
+<h1><%= @category.name %>Tasks</h1>
 
 <% if @category.tasks.any? %>
   <ul>
@@ -14,9 +14,4 @@
 
 <a href="/categories/<%= @category.id %>" data-turbo-method="delete">Delete Category</a>
 
-
-<a href="/categories">See all categories</a>
-
-
-<a href="/categories/<%= @category.id %>" data-turbo-method="delete">Delete Category</a>
 
